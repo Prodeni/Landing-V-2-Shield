@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRODENI Shield™ | Sistema de Inteligencia Agrícola · Michoacán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto+Slab:wght@300;400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BRAND TOKENS (idénticos a home) ===== */
+:root {
+  --verde-oscuro:  #0e3525;
+  --verde-medio:   #45a464;
+  --verde-claro:   #dae9da;
+  --azul-oscuro:   #002a50;
+  --azul-medio:    #57ade0;
+  --azul-claro:    #d8ecfb;
+  --cafe-oscuro:   #312200;
+  --cafe-medio:    #8d642c;
+  --cafe-claro:    #e7dbcf;
+  --rojo:          #d95935;
+  --amarillo:      #f7ce4c;
+  --crema:         #fffbdf;
+  --font-heading:  'DM Serif Display', serif;
+  --font-body:     'Open Sans', sans-serif;
+  --font-slab:     'Roboto Slab', serif;
+  --max-w: 1200px;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: #fff; color: var(--verde-oscuro); overflow-x: hidden; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(14,53,37,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(69,164,100,0.2);
+  padding: 0 2rem; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-text { font-family: var(--font-body); font-weight: 800; font-size: 20px; color: #fff; letter-spacing: 1px; }
+.nav-logo-sub { font-size: 9px; font-weight: 400; color: var(--verde-medio); letter-spacing: 2px; text-transform: uppercase; display: block; line-height: 1; }
+.nav-links { display: flex; align-items: center; gap: .25rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,.8); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; transition: all .2s; white-space: nowrap; }
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
+.nav-links a.active { color: var(--amarillo); }
+.nav-cta { background: var(--verde-medio); color: #fff !important; padding: 8px 18px !important; border-radius: 8px !important; font-weight: 600 !important; }
+.nav-cta:hover { background: #3a9050 !important; }
+
+/* ===== HERO SHIELD ===== */
+.hero {
+  position: relative; min-height: 90vh;
+  background: var(--verde-oscuro);
+  display: flex; align-items: center;
+  overflow: hidden; padding-top: 64px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(ellipse 70% 80% at 80% 50%, rgba(69,164,100,0.1) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(247,206,76,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: .035;
+  background-image: linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.hero-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 5rem 6rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  position: relative; z-index: 2; width: 100%;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(247,206,76,0.1); border: 1px solid rgba(247,206,76,0.3);
+  color: var(--amarillo); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 1.5rem;
+}
+.shield-dot { width: 6px; height: 6px; background: var(--amarillo); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+.hero-title { font-family: var(--font-heading); font-size: clamp(2.8rem,4vw,4rem); color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+.hero-title em { font-style: italic; color: var(--verde-medio); }
+.hero-title .gold { color: var(--amarillo); font-style: normal; }
+.hero-subtitle { font-family: var(--font-slab); font-weight: 300; font-size: 16.5px; color: rgba(255,255,255,.7); line-height: 1.75; max-width: 500px; margin-bottom: 2.5rem; }
+
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--verde-medio); color: #fff; padding: 14px 26px;
+  border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all .25s;
+}
+.btn-primary:hover { background: #3a9050; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(69,164,100,.35); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,.85); padding: 14px 26px;
+  border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none;
+  border: 1px solid rgba(255,255,255,.2); transition: all .25s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.4); }
+
+/* Hero right — sistema visual */
+.hero-system {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(69,164,100,.2);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+}
+.system-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,.35); margin-bottom: 1.5rem;
+}
+.system-days { display: flex; flex-direction: column; gap: 10px; }
+.system-day {
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 10px; padding: 12px 16px;
+  transition: all .3s; cursor: pointer;
+}
+.system-day:hover { background: rgba(255,255,255,.08); border-color: rgba(69,164,100,.25); }
+.day-dot { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.day-lunes   .day-dot { background: rgba(217,89,53,.2);  }
+.day-martes  .day-dot { background: rgba(247,206,76,.15); }
+.day-miercoles .day-dot { background: rgba(69,164,100,.2); }
+.day-jueves  .day-dot { background: rgba(87,173,224,.2); }
+.day-viernes .day-dot { background: rgba(141,100,44,.2); }
+.day-info { flex: 1; }
+.day-name { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.4); }
+.day-title { font-size: 13.5px; font-weight: 600; color: #fff; margin-top: 1px; }
+.day-badge {
+  font-size: 9.5px; font-weight: 700; padding: 3px 9px; border-radius: 100px;
+  letter-spacing: .5px; text-transform: uppercase; white-space: nowrap;
+}
+.badge-rojo    { background: rgba(217,89,53,.2);  color: #e88060; border: 1px solid rgba(217,89,53,.3); }
+.badge-amarillo{ background: rgba(247,206,76,.15); color: var(--amarillo); border: 1px solid rgba(247,206,76,.3); }
+.badge-verde   { background: rgba(69,164,100,.2);  color: var(--verde-medio); border: 1px solid rgba(69,164,100,.3); }
+.badge-azul    { background: rgba(87,173,224,.2);  color: var(--azul-medio); border: 1px solid rgba(87,173,224,.3); }
+.badge-cafe    { background: rgba(141,100,44,.2);  color: #c89a55; border: 1px solid rgba(141,100,44,.3); }
+
+.hero-stat-row {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 3rem;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num { font-family: var(--font-heading); font-size: 2rem; color: var(--amarillo); display: block; line-height: 1; }
+.hero-stat-label { font-size: 10.5px; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .8px; margin-top: 4px; display: block; }
+
+/* ===== CONTAINER ===== */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 6rem; }
+section { padding: 5rem 0; }
+.section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--verde-medio); margin-bottom: .75rem; }
+.section-title { font-family: var(--font-heading); font-size: clamp(2rem,3vw,2.8rem); color: var(--verde-oscuro); line-height: 1.15; margin-bottom: 1rem; }
+.section-title em { font-style: italic; color: var(--verde-medio); }
+.section-desc { font-family: var(--font-slab); font-weight: 300; font-size: 17px; color: #3a6b4e; line-height: 1.7; max-width: 640px; }
+
+/* ===== RADAR SECTION ===== */
+.radar-section { background: var(--verde-oscuro); padding: 5rem 0; }
+.radar-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+.radar-section .section-eyebrow { color: var(--amarillo); }
+.radar-section .section-title { color: #fff; }
+.radar-section .section-desc { color: rgba(255,255,255,.6); }
+.radar-live-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(217,89,53,.15); border: 1px solid rgba(217,89,53,.35);
+  color: #e88060; font-size: 11px; font-weight: 700;
+  padding: 6px 14px; border-radius: 100px; letter-spacing: .8px;
+  text-transform: uppercase;
+}
+.live-dot { width: 7px; height: 7px; background: #e88060; border-radius: 50%; animation: pulse 1.5s infinite; }
+
+.radar-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.25rem; }
+.radar-card {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(69,164,100,.18);
+  border-radius: var(--radius-lg); padding: 1.75rem;
+  transition: all .3s; cursor: pointer; position: relative; overflow: hidden;
+}
+.radar-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  opacity: 0; transition: opacity .3s;
+}
+.radar-card:hover { background: rgba(255,255,255,.08); transform: translateY(-3px); }
+.radar-card:hover::before { opacity: 1; }
+.radar-main::before { background: var(--rojo); }
+.radar-clima::before { background: var(--azul-medio); }
+.radar-mercado::before { background: var(--amarillo); }
+
+.radar-card-type {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: .75rem; display: flex; align-items: center; gap: 6px;
+}
+.radar-card-icon { font-size: 16px; }
+.radar-main .radar-card-type    { color: #e88060; }
+.radar-clima .radar-card-type   { color: var(--azul-medio); }
+.radar-mercado .radar-card-type { color: var(--amarillo); }
+
+.radar-card h3 { font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: .75rem; line-height: 1.2; }
+.radar-card p  { font-size: 13.5px; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 1.25rem; }
+.radar-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10.5px; font-weight: 600; padding: 4px 10px; border-radius: 6px; border: 1px solid;
+}
+.tag-alerta { color: #e88060; border-color: rgba(217,89,53,.3); background: rgba(217,89,53,.1); }
+.tag-clima  { color: var(--azul-medio); border-color: rgba(87,173,224,.3); background: rgba(87,173,224,.1); }
+.tag-mercado{ color: var(--amarillo); border-color: rgba(247,206,76,.3); background: rgba(247,206,76,.1); }
+
+.radar-card-zones { margin-top: 1rem; }
+.zone-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .5rem; }
+.zones-list { display: flex; flex-wrap: wrap; gap: 5px; }
+.zone-pill {
+  font-size: 10.5px; background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.6);
+  padding: 3px 9px; border-radius: 6px;
+}
+
+.radar-cta-row { margin-top: 2rem; text-align: center; }
+.btn-radar {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--amarillo);
+  border: 1px solid rgba(247,206,76,.35);
+  padding: 12px 28px; border-radius: 10px;
+  font-weight: 700; font-size: 14px; text-decoration: none; transition: all .25s;
+}
+.btn-radar:hover { background: rgba(247,206,76,.08); border-color: rgba(247,206,76,.6); }
+
+/* ===== LA SEÑAL ===== */
+.senal-section { background: #f9fbf9; padding: 5rem 0; }
+.senal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2.5rem; align-items: center; }
+.senal-cards { display: flex; flex-direction: column; gap: 1rem; }
+.senal-card {
+  background: #fff; border: 1px solid #e2eee2; border-radius: var(--radius-lg); padding: 1.5rem;
+  position: relative; overflow: hidden; transition: all .3s; cursor: pointer;
+}
+.senal-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+.senal-card.ve { border-color: rgba(217,89,53,.25); }
+.senal-card.ve::before { background: var(--rojo); }
+.senal-card.sg { border-color: rgba(247,206,76,.35); }
+.senal-card.sg::before { background: var(--amarillo); }
+.senal-card.ha { border-color: rgba(69,164,100,.3); }
+.senal-card.ha::before { background: var(--verde-medio); }
+.senal-card:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+
+.senal-step {
+  display: flex; align-items: flex-start; gap: 10px; margin-bottom: .75rem;
+}
+.senal-step-icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+.senal-step-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #888; margin-bottom: 2px; }
+.senal-step-text { font-size: 14px; color: var(--verde-oscuro); font-weight: 600; line-height: 1.45; }
+.senal-divider { height: 1px; background: #f0f0f0; margin: .75rem 0; }
+.senal-cta-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--verde-claro); color: var(--verde-oscuro);
+  font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 100px;
+  text-decoration: none; transition: all .2s;
+}
+.senal-cta-pill:hover { background: var(--verde-medio); color: #fff; }
+
+.senal-right { padding: 2rem; }
+.senal-big-quote {
+  font-family: var(--font-heading); font-size: 1.25rem;
+  font-style: italic; color: var(--verde-oscuro); line-height: 1.55;
+  border-left: 4px solid var(--verde-medio);
+  padding-left: 1.25rem; margin-bottom: 2rem;
+}
+.senal-how { margin-top: 2rem; }
+.senal-how-title { font-weight: 700; font-size: 13px; color: var(--verde-oscuro); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .8px; }
+.senal-step-list { display: flex; flex-direction: column; gap: .75rem; }
+.senal-step-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #444; line-height: 1.5; }
+.step-num { width: 22px; height: 22px; background: var(--verde-claro); color: var(--verde-oscuro); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+
+.senal-wa-box {
+  margin-top: 2rem; background: var(--verde-oscuro); border-radius: var(--radius);
+  padding: 1.5rem; color: #fff;
+}
+.wa-box-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: .5rem; }
+.wa-box-text { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 1rem; }
+.wa-box-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #25D366; color: #fff; padding: 10px 20px; border-radius: 8px;
+  font-weight: 700; font-size: 13.5px; text-decoration: none; transition: all .2s;
+}
+.wa-box-cta:hover { background: #1fb858; }
+
+/* ===== CENTRO DE CONOCIMIENTO ===== */
+.conocimiento-section { background: #fff; padding: 5rem 0; }
+.tabs { display: flex; gap: 8px; margin-bottom: 2rem; flex-wrap: wrap; }
+.tab {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 1px solid #e0e0e0; background: #f8f8f8; color: #555;
+  transition: all .2s;
+}
+.tab.active, .tab:hover { background: var(--verde-oscuro); color: #fff; border-color: var(--verde-oscuro); }
+.conocimiento-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.conocimiento-card {
+  background: #f9fbf9; border: 1px solid #e2eee2; border-radius: var(--radius-lg); overflow: hidden;
+  transition: all .3s; cursor: pointer; text-decoration: none; display: block;
+}
+.conocimiento-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(14,53,37,.08); border-color: rgba(69,164,100,.35); }
+.conocimiento-img {
+  height: 12px;
+  position: relative;
+}
+.bar-trips    { background: linear-gradient(90deg, var(--rojo) 0%, rgba(217,89,53,.5) 100%); }
+.bar-botritis { background: linear-gradient(90deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%); }
+.bar-aranha   { background: linear-gradient(90deg, var(--cafe-medio) 0%, var(--amarillo) 100%); }
+.bar-mosca    { background: linear-gradient(90deg, var(--verde-medio) 0%, var(--azul-medio) 100%); }
+.bar-piretrinas { background: linear-gradient(90deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%); }
+.bar-fenologico { background: linear-gradient(90deg, var(--amarillo) 0%, var(--cafe-medio) 100%); }
+.conocimiento-body { padding: 1.5rem; }
+.con-type { font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--verde-medio); margin-bottom: .5rem; }
+.con-title { font-family: var(--font-heading); font-size: 1.15rem; color: var(--verde-oscuro); margin-bottom: .5rem; line-height: 1.3; }
+.con-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 1rem; }
+.con-meta { display: flex; justify-content: space-between; align-items: center; }
+.con-cultivos { display: flex; gap: 4px; }
+.con-cultivo-pill { font-size: 10px; font-weight: 600; background: var(--verde-claro); color: var(--verde-oscuro); padding: 2px 8px; border-radius: 100px; }
+.con-link { font-size: 12px; font-weight: 700; color: var(--verde-medio); }
+
+/* ===== CUENTOS + VOZ (radio) ===== */
+.radio-section { background: var(--cafe-claro); padding: 5rem 0; }
+.radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2.5rem; }
+
+/* Podcast player */
+.player-card {
+  background: var(--verde-oscuro); border-radius: var(--radius-lg); overflow: hidden;
+}
+.player-header {
+  background: rgba(0,0,0,.25); padding: 1.5rem;
+  display: flex; align-items: center; gap: 14px;
+}
+.player-logo {
+  width: 52px; height: 52px; background: var(--amarillo); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 11px; color: var(--cafe-oscuro); text-align: center; line-height: 1.2;
+}
+.player-show-name { font-weight: 800; font-size: 14px; color: #fff; }
+.player-show-sub  { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 2px; }
+.player-episode { padding: 1.5rem; }
+.episode-num { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amarillo); margin-bottom: .5rem; }
+.episode-title { font-family: var(--font-heading); font-size: 1.25rem; color: #fff; margin-bottom: .75rem; line-height: 1.2; }
+.episode-desc  { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 1.5rem; }
+.player-controls {
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: .75rem;
+}
+.player-progress { display: flex; align-items: center; gap: 10px; }
+.progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,.15); border-radius: 2px; position: relative; }
+.progress-fill { height: 100%; width: 35%; background: var(--verde-medio); border-radius: 2px; }
+.progress-dot { width: 10px; height: 10px; background: #fff; border-radius: 50%; position: absolute; left: 35%; top: 50%; transform: translate(-50%,-50%); }
+.time-label { font-size: 11px; color: rgba(255,255,255,.45); white-space: nowrap; }
+.player-btns { display: flex; align-items: center; gap: 12px; }
+.play-btn {
+  width: 42px; height: 42px; background: var(--verde-medio); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; transition: all .2s;
+}
+.play-btn:hover { background: #3a9050; }
+.play-btn svg { fill: #fff; margin-left: 2px; }
+.ctrl-btn { background: none; border: none; color: rgba(255,255,255,.5); cursor: pointer; font-size: 18px; transition: color .2s; padding: 4px; }
+.ctrl-btn:hover { color: rgba(255,255,255,.9); }
+.player-links { display: flex; gap: 8px; padding: 1rem 1.25rem 1.5rem; }
+.stream-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 700; padding: 7px 14px; border-radius: 7px;
+  text-decoration: none; transition: all .2s;
+}
+.link-spotify { background: rgba(30,215,96,.15); color: #1ED760; border: 1px solid rgba(30,215,96,.3); }
+.link-spotify:hover { background: rgba(30,215,96,.25); }
+.link-youtube { background: rgba(255,0,0,.12); color: #FF6B6B; border: 1px solid rgba(255,0,0,.25); }
+.link-youtube:hover { background: rgba(255,0,0,.2); }
+
+/* Cuentos list */
+.cuentos-list { display: flex; flex-direction: column; gap: 1rem; }
+.cuento-card {
+  background: #fff; border: 1px solid #e2d8cc; border-radius: var(--radius);
+  padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 16px;
+  cursor: pointer; transition: all .3s; text-decoration: none;
+}
+.cuento-card:hover { border-color: var(--cafe-medio); transform: translateX(4px); }
+.cuento-num {
+  width: 36px; height: 36px; background: var(--cafe-claro); border: 1px solid #d4c4b0;
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 13px; color: var(--cafe-oscuro); flex-shrink: 0;
+}
+.cuento-info { flex: 1; }
+.cuento-tipo { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cafe-medio); margin-bottom: 2px; }
+.cuento-title { font-size: 14px; font-weight: 700; color: var(--verde-oscuro); line-height: 1.35; }
+.cuento-dur  { font-size: 11px; color: #888; margin-top: 2px; }
+.cuento-play {
+  width: 34px; height: 34px; background: var(--cafe-claro); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: var(--cafe-oscuro); font-size: 10px;
+}
+
+/* ===== CASOS DE CAMPO ===== */
+.casos-section { background: #fff; padding: 5rem 0; }
+.casos-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.caso-card {
+  background: #f9fbf9; border: 1px solid #e2eee2; border-radius: var(--radius-lg);
+  overflow: hidden; transition: all .3s; cursor: pointer; text-decoration: none; display: block;
+}
+.caso-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(14,53,37,.08); }
+.caso-header {
+  padding: 1.5rem;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  border-bottom: 1px solid #e8f0e8;
+}
+.caso-type-badge {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 6px;
+}
+.badge-trips  { background: rgba(217,89,53,.1); color: var(--rojo); border: 1px solid rgba(217,89,53,.25); }
+.badge-aranha { background: rgba(141,100,44,.1); color: var(--cafe-medio); border: 1px solid rgba(141,100,44,.25); }
+.badge-mosca  { background: rgba(87,173,224,.12); color: var(--azul-oscuro); border: 1px solid rgba(87,173,224,.3); }
+.badge-botrytis { background: rgba(0,42,80,.1); color: var(--azul-oscuro); border: 1px solid rgba(0,42,80,.2); }
+.caso-result-badge {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 700; color: var(--verde-medio);
+}
+.caso-result-dot { width: 6px; height: 6px; background: var(--verde-medio); border-radius: 50%; }
+.caso-body { padding: 1.5rem; }
+.caso-title { font-family: var(--font-heading); font-size: 1.2rem; color: var(--verde-oscuro); margin-bottom: .75rem; line-height: 1.3; }
+.caso-evidence {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-bottom: 1rem;
+}
+.evidence-dot {
+  height: 6px; border-radius: 3px; background: var(--verde-claro);
+  border: 1px solid rgba(69,164,100,.3);
+  display: flex; align-items: center; justify-content: center;
+}
+.evidence-dot.filled { background: var(--verde-medio); }
+.caso-desc { font-size: 13.5px; color: #555; line-height: 1.6; margin-bottom: 1.25rem; }
+.caso-footer { display: flex; justify-content: space-between; align-items: center; padding-top: .75rem; border-top: 1px solid #eee; }
+.caso-location { font-size: 11.5px; color: #888; display: flex; align-items: center; gap: 5px; }
+.caso-productos { display: flex; gap: 4px; }
+.caso-prod-tag { font-size: 10px; font-weight: 600; background: var(--verde-claro); color: var(--verde-oscuro); padding: 2px 8px; border-radius: 6px; }
+
+/* ===== COMUNIDAD ===== */
+.comunidad-section { background: var(--verde-oscuro); padding: 5rem 0; }
+.comunidad-section .section-eyebrow { color: var(--amarillo); }
+.comunidad-section .section-title { color: #fff; }
+.comunidad-section .section-desc { color: rgba(255,255,255,.6); }
+.comunidad-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.comunidad-card {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius-lg); padding: 2rem; transition: all .3s; cursor: pointer;
+}
+.comunidad-card:hover { background: rgba(255,255,255,.08); transform: translateY(-3px); }
+.comunidad-icon { font-size: 28px; margin-bottom: 1rem; }
+.comunidad-title { font-family: var(--font-heading); font-size: 1.25rem; color: #fff; margin-bottom: .5rem; }
+.comunidad-desc { font-size: 13.5px; color: rgba(255,255,255,.55); line-height: 1.6; margin-bottom: 1.5rem; }
+.comunidad-count {
+  font-family: var(--font-heading); font-size: 2rem; color: var(--amarillo);
+  display: block; line-height: 1;
+}
+.comunidad-count-label { font-size: 11px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .8px; }
+.comunidad-cta {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 13px; font-weight: 700; color: var(--verde-medio);
+  text-decoration: none; margin-top: 1rem;
+}
+.comunidad-cta:hover { color: var(--amarillo); }
+
+/* ===== INGENIERAS FIELD TEAM ===== */
+.equipo-section { background: #f9fbf9; padding: 5rem 0; }
+.equipo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.equipo-card {
+  background: #fff; border: 1px solid #e2eee2; border-radius: var(--radius-lg); padding: 1.75rem;
+  text-align: center; transition: all .3s;
+}
+.equipo-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(14,53,37,.08); }
+.equipo-avatar {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400;
+  color: #fff;
+}
+.av-1 { background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio)); }
+.av-2 { background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); }
+.av-3 { background: linear-gradient(135deg, var(--cafe-oscuro), var(--cafe-medio)); }
+.equipo-name { font-weight: 700; font-size: 16px; color: var(--verde-oscuro); margin-bottom: 2px; }
+.equipo-role { font-size: 12px; color: var(--verde-medio); font-weight: 600; margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .8px; }
+.equipo-zona { font-size: 13px; color: #666; margin-bottom: 1rem; }
+.equipo-cultivos { display: flex; gap: 5px; justify-content: center; flex-wrap: wrap; }
+.equipo-cultivo-pill { font-size: 10.5px; background: var(--verde-claro); color: var(--verde-oscuro); font-weight: 600; padding: 3px 9px; border-radius: 100px; }
+
+/* ===== SUSCRIPCION RADAR ===== */
+.suscripcion-section { background: var(--verde-claro); padding: 4rem 0; }
+.suscripcion-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.sus-title { font-family: var(--font-heading); font-size: 2rem; color: var(--verde-oscuro); margin-bottom: .75rem; }
+.sus-title em { font-style: italic; color: var(--verde-medio); }
+.sus-desc { font-family: var(--font-slab); font-weight: 300; font-size: 16px; color: #3a6b4e; line-height: 1.7; }
+.sus-form { display: flex; flex-direction: column; gap: 12px; }
+.sus-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sus-input {
+  padding: 13px 16px; border: 1px solid rgba(69,164,100,.3); border-radius: 10px;
+  font-size: 14px; font-family: var(--font-body); background: rgba(255,255,255,.7);
+  color: var(--verde-oscuro); outline: none; transition: all .2s;
+}
+.sus-input:focus { border-color: var(--verde-medio); background: #fff; box-shadow: 0 0 0 3px rgba(69,164,100,.15); }
+.sus-input::placeholder { color: #999; }
+.sus-select { cursor: pointer; }
+.sus-btn {
+  background: var(--verde-oscuro); color: #fff; padding: 14px 24px;
+  border-radius: 10px; font-weight: 700; font-size: 14.5px; border: none; cursor: pointer;
+  transition: all .25s; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.sus-btn:hover { background: #0a2a1b; transform: translateY(-1px); }
+.sus-note { font-size: 11.5px; color: #3a6b4e; opacity: .8; }
+
+/* ===== CTA FINAL ===== */
+.cta-final { background: var(--verde-oscuro); padding: 5rem 0; text-align: center; position: relative; overflow: hidden; }
+.cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(69,164,100,.08) 0%, transparent 70%); pointer-events: none; }
+.cta-title { font-family: var(--font-heading); font-size: clamp(2rem,3.5vw,3rem); color: #fff; margin-bottom: 1rem; position: relative; z-index: 1; }
+.cta-title em { color: var(--verde-medio); font-style: italic; }
+.cta-desc { font-size: 17px; color: rgba(255,255,255,.6); max-width: 520px; margin: 0 auto 2.5rem; font-family: var(--font-slab); font-weight: 300; line-height: 1.7; position: relative; z-index: 1; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+/* ===== FOOTER ===== */
+footer { background: #081e13; padding: 3.5rem 0 2rem; color: rgba(255,255,255,.5); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-name { font-family: var(--font-body); font-weight: 800; font-size: 22px; color: #fff; letter-spacing: 1px; }
+.footer-brand-sub { font-size: 10px; color: var(--verde-medio); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+.footer-manifesto { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,.4); max-width: 260px; }
+.footer-heading { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { color: rgba(255,255,255,.55); text-decoration: none; font-size: 14px; transition: color .2s; }
+.footer-links a:hover { color: var(--verde-medio); }
+.footer-divider { border-top: 1px solid rgba(255,255,255,.06); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom-text { font-size: 12.5px; }
+.footer-certs { display: flex; gap: 8px; }
+.footer-cert-badge { font-size: 10px; font-weight: 700; letter-spacing: .8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.45); padding: 4px 10px; border-radius: 6px; }
+
+/* WhatsApp flotante */
+.wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,.45); text-decoration: none; transition: all .25s; animation: floatAnim 3s ease-in-out infinite; }
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+@keyframes floatAnim { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.animate { animation: fadeUp .6s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+      <rect width="38" height="38" rx="8" fill="#45a464"/>
+      <path d="M19 6C14 6 11 11 11 15.5C11 20 13.5 22 16 24L19 32L22 24C24.5 22 27 20 27 15.5C27 11 24 6 19 6Z" fill="#0e3525" opacity="0.3"/>
+      <path d="M19 6C19 6 19 18 15 24" stroke="#f7ce4c" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M19 6C19 6 19 18 23 24" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <span class="nav-logo-text">PRODENI</span>
+      <span class="nav-logo-sub">Pasión por lo orgánico</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Productos</a></li>
+    <li><a href="#">Soluciones por Plaga</a></li>
+    <li><a href="#">Cultivos</a></li>
+    <li><a href="#" class="active" style="color:var(--amarillo)">⬡ PRODENI Shield</a></li>
+    <li><a href="#">Nosotros</a></li>
+    <li><a href="#">Contacto</a></li>
+    <li><a href="https://wa.me/524521906583" class="nav-cta">Habla con un agrónomo →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="shield-dot"></span>
+        Sistema de inteligencia agrícola
+      </div>
+      <h1 class="hero-title">
+        PRODENI<br>
+        <span class="gold">Shield™</span><br>
+        <em>El guardián</em><br>de tu campo.
+      </h1>
+      <p class="hero-subtitle">
+        No es un boletín. No es un blog de empresa. Es un sistema técnico activo — 
+        5 días a la semana, 3 ingenieras en campo, inteligencia real para decisiones reales.
+      </p>
+      <div class="hero-ctas">
+        <a href="#radar" class="btn-primary">
+          Ver Radar Agrícola →
+        </a>
+        <a href="#suscripcion" class="btn-secondary">
+          Suscribirme al sistema
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-system">
+        <div class="system-label">Protocolo semanal activo</div>
+        <div class="system-days">
+          <div class="system-day day-lunes">
+            <div class="day-dot">🗺️</div>
+            <div class="day-info">
+              <div class="day-name">Lunes</div>
+              <div class="day-title">Mapa Semanal de Riesgos</div>
+            </div>
+            <span class="day-badge badge-rojo">Bitácora</span>
+          </div>
+          <div class="system-day day-martes">
+            <div class="day-dot">🎙️</div>
+            <div class="day-info">
+              <div class="day-name">Martes</div>
+              <div class="day-title">Cuentos del Campo</div>
+            </div>
+            <span class="day-badge badge-amarillo">Podcast</span>
+          </div>
+          <div class="system-day day-miercoles">
+            <div class="day-dot">🔍</div>
+            <div class="day-info">
+              <div class="day-name">Miércoles</div>
+              <div class="day-title">La Señal del Guardián</div>
+            </div>
+            <span class="day-badge badge-verde">Caso</span>
+          </div>
+          <div class="system-day day-jueves">
+            <div class="day-dot">🔊</div>
+            <div class="day-info">
+              <div class="day-name">Jueves</div>
+              <div class="day-title">La Voz del Guardián</div>
+            </div>
+            <span class="day-badge badge-azul">Radio</span>
+          </div>
+          <div class="system-day day-viernes">
+            <div class="day-dot">📡</div>
+            <div class="day-info">
+              <div class="day-name">Viernes</div>
+              <div class="day-title">Radar del Campo</div>
+            </div>
+            <span class="day-badge badge-cafe">Análisis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:2;">
+    <div style="max-width:var(--max-w);margin:0 auto;padding:0 6rem 3rem;">
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <span class="hero-stat-num">5</span>
+          <span class="hero-stat-label">contenidos<br>por semana</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3</span>
+          <span class="hero-stat-label">ingenieras<br>en campo</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">23+</span>
+          <span class="hero-stat-label">años de<br>experiencia</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3</span>
+          <span class="hero-stat-label">estados<br>monitoreados</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RADAR AGRÍCOLA -->
+<section class="radar-section" id="radar">
+  <div class="container">
+    <div class="radar-header">
+      <div>
+        <div class="section-eyebrow">Lunes · Mapa semanal</div>
+        <h2 class="section-title">Radar <em>Agrícola</em></h2>
+        <p class="section-desc">Inteligencia fitosanitaria actualizada cada semana. Clima, presión de plagas y alertas por zona.</p>
+      </div>
+      <div>
+        <div class="radar-live-badge"><span class="live-dot"></span> Semana 11 · Marzo 2026</div>
+      </div>
+    </div>
+
+    <div class="radar-grid">
+      <!-- Alerta principal -->
+      <div class="radar-card radar-main">
+        <div class="radar-card-type">
+          <span class="radar-card-icon">⚠️</span>
+          Alerta fitosanitaria prioritaria
+        </div>
+        <h3>Alta presión de Trips en berries — Zona Tingüindín</h3>
+        <p>Incremento significativo de <em>Frankliniella occidentalis</em> registrado por ingenieras de campo en predios de zarzamora y arándano. Condiciones de temperatura elevada (22-26°C) y baja humedad relativa favorecen la reproducción acelerada del vector.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem;">
+          <span class="radar-tag tag-alerta">🔴 Alerta alta</span>
+          <span class="radar-tag tag-alerta">Frankliniella occidentalis</span>
+        </div>
+        <div class="radar-card-zones">
+          <div class="zone-label">Zonas afectadas</div>
+          <div class="zones-list">
+            <span class="zone-pill">Tingüindín</span>
+            <span class="zone-pill">Los Reyes</span>
+            <span class="zone-pill">Zamora</span>
+            <span class="zone-pill">Jacona</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clima -->
+      <div class="radar-card radar-clima">
+        <div class="radar-card-type">
+          <span class="radar-card-icon">🌤️</span>
+          Condición climática
+        </div>
+        <h3>Vientos del norte — riesgo de desecación foliar</h3>
+        <p>Vientos 15-20 km/h reducen la adherencia de aplicaciones. Programar aplicaciones antes de las 10am o después de las 5pm para optimizar eficacia.</p>
+        <div style="display:flex;gap:6px;margin-bottom:1rem;">
+          <span class="radar-tag tag-clima">22-28°C</span>
+          <span class="radar-tag tag-clima">HR 45-55%</span>
+        </div>
+        <div class="radar-card-zones">
+          <div class="zone-label">Recomendación</div>
+          <div class="zones-list">
+            <span class="zone-pill">Aplicar mañana temprano</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mercado -->
+      <div class="radar-card radar-mercado">
+        <div class="radar-card-type">
+          <span class="radar-card-icon">📊</span>
+          Inteligencia de mercado
+        </div>
+        <h3>Berries orgánicas premium con demanda al alza</h3>
+        <p>Mercados de EUA y Canadá incrementaron la demanda de zarzamora certificada OMRI en un 18% respecto al trimestre anterior. La calidad de fruto sin residuos es el diferenciador.</p>
+        <div style="margin-bottom:1rem;">
+          <span class="radar-tag tag-mercado">↑ Tendencia positiva</span>
+        </div>
+        <div class="radar-card-zones">
+          <div class="zone-label">Mercados activos</div>
+          <div class="zones-list">
+            <span class="zone-pill">EUA</span>
+            <span class="zone-pill">Canadá</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="radar-cta-row">
+      <a href="#suscripcion" class="btn-radar">
+        📡 Recibir el Radar cada viernes en mi correo →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LA SEÑAL DEL GUARDIÁN -->
+<section class="senal-section" id="senal">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+      <div>
+        <div class="section-eyebrow">Miércoles · Caso de campo</div>
+        <h2 class="section-title">La Señal del <em>Guardián</em></h2>
+        <p class="section-desc" style="margin-bottom:2rem;">Un síntoma. Una causa. Una acción. Cada miércoles publicamos un caso real documentado por nuestras ingenieras.</p>
+        <div class="senal-cards">
+          <!-- Caso activo -->
+          <div class="senal-card ve">
+            <div class="senal-step">
+              <span class="senal-step-icon">🔍</span>
+              <div>
+                <div class="senal-step-label">Lo que ves</div>
+                <div class="senal-step-text">Manchas plateadas en el haz de hojas jóvenes de arándano en etapa de brotación</div>
+              </div>
+            </div>
+            <div class="senal-divider"></div>
+            <div class="senal-step">
+              <span class="senal-step-icon">🧠</span>
+              <div>
+                <div class="senal-step-label">Lo que significa</div>
+                <div class="senal-step-text">Raspado epidérmico por <em>Frankliniella occidentalis</em> en estadio nimfa. La planta activa respuesta de estrés oxidativo.</div>
+              </div>
+            </div>
+            <div class="senal-divider"></div>
+            <div class="senal-step">
+              <span class="senal-step-icon">⚡</span>
+              <div>
+                <div class="senal-step-label">Lo que debes hacer ahora</div>
+                <div class="senal-step-text">Monitoreo con trampas azules + aplicación preventiva en primeras horas de la mañana</div>
+              </div>
+            </div>
+            <div style="margin-top:1rem;">
+              <a href="https://wa.me/524521906583" class="senal-cta-pill">
+                📲 ¿Tu lote muestra esto? Envíanos foto
+              </a>
+            </div>
+          </div>
+
+          <div class="senal-card sg" style="opacity:.7;">
+            <div class="senal-step">
+              <span class="senal-step-icon">🔍</span>
+              <div>
+                <div class="senal-step-label">Lo que ves</div>
+                <div class="senal-step-text">Marchitamiento apical con halo amarillo en aguacate Hass — semana 8</div>
+              </div>
+            </div>
+            <div style="margin-top:.75rem;font-size:12px;color:#aaa;">← Señal anterior</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="senal-right">
+        <blockquote class="senal-big-quote">
+          "El daño visible es el último síntoma de un problema que empezó invisible. 
+          La planta siempre avisa. El Guardián solo traduce."
+        </blockquote>
+        <div class="senal-how">
+          <div class="senal-how-title">¿Cómo funciona La Señal?</div>
+          <div class="senal-step-list">
+            <div class="senal-step-item">
+              <div class="step-num">1</div>
+              Nuestras ingenieras documentan síntomas reales en campo cada semana en Michoacán, Jalisco y Sinaloa
+            </div>
+            <div class="senal-step-item">
+              <div class="step-num">2</div>
+              Seleccionamos el caso de mayor impacto y riesgo para la temporada actual
+            </div>
+            <div class="senal-step-item">
+              <div class="step-num">3</div>
+              Publicamos cada miércoles con foto real, diagnóstico técnico y acción recomendada — sin marca de producto
+            </div>
+            <div class="senal-step-item">
+              <div class="step-num">4</div>
+              Si tu lote muestra síntomas similares, un agrónomo responde en menos de 24 horas por WhatsApp
+            </div>
+          </div>
+        </div>
+        <div class="senal-wa-box">
+          <div class="wa-box-label">Diagnóstico gratuito</div>
+          <div class="wa-box-text">¿Tu cultivo muestra algo que no reconoces? Envíanos una foto. Diagnóstico técnico en 24 horas. Sin costo. Sin compromiso de compra.</div>
+          <a href="https://wa.me/524521906583" class="wa-box-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            452 201 8822 — WhatsApp directo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RADIO PRODENI: VOZ + CUENTOS -->
+<section class="radio-section" id="radio">
+  <div class="container">
+    <div class="section-eyebrow">Jueves · Martes</div>
+    <h2 class="section-title" style="color:var(--cafe-oscuro);">Radio <em>PRODENI</em></h2>
+    <p class="section-desc" style="color:#5c4530;margin-bottom:0;">Dos formatos de audio. La Voz del Guardián: análisis técnico profundo. Cuentos del Campo: mitos agrícolas descifrados por la ciencia.</p>
+    <div class="radio-grid">
+      <!-- Player -->
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cafe-medio);margin-bottom:1rem;">Último episodio · La Voz del Guardián</div>
+        <div class="player-card">
+          <div class="player-header">
+            <div class="player-logo">LA VOZ<br>GUARDIÁN</div>
+            <div>
+              <div class="player-show-name">Radio PRODENI</div>
+              <div class="player-show-sub">Información técnica para decisiones reales</div>
+            </div>
+          </div>
+          <div class="player-episode">
+            <div class="episode-num">Episodio 12 · Jueves 6 Mar 2026</div>
+            <h3 class="episode-title">Por qué reaccionar siempre sale más caro que prevenir</h3>
+            <p class="episode-desc">El costo real de una aplicación de rescate vs. un programa preventivo. Calculamos con datos reales de berries en Tingüindín.</p>
+            <div class="player-controls">
+              <div class="player-progress">
+                <span class="time-label">8:22</span>
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                  <div class="progress-dot"></div>
+                </div>
+                <span class="time-label">23:41</span>
+              </div>
+              <div class="player-btns">
+                <button class="ctrl-btn">⏮</button>
+                <button class="ctrl-btn">⏪</button>
+                <button class="play-btn" onclick="this.querySelector('svg').innerHTML = this.querySelector('svg').innerHTML.includes('M6') ? '<rect x=\'6\' y=\'4\' width=\'4\' height=\'16\'/><rect x=\'14\' y=\'4\' width=\'4\' height=\'16\'/>' : '<polygon points=\'5 3 19 12 5 21\'/>'" >
+                  <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21" fill="white"/></svg>
+                </button>
+                <button class="ctrl-btn">⏩</button>
+                <button class="ctrl-btn">⏭</button>
+                <span style="margin-left:auto;font-size:11px;color:rgba(255,255,255,.4);">1× velocidad</span>
+              </div>
+            </div>
+          </div>
+          <div class="player-links">
+            <a href="#" class="stream-link link-spotify">♫ Spotify</a>
+            <a href="#" class="stream-link link-youtube">▶ YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuentos -->
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cafe-medio);margin-bottom:1rem;">Cuentos del Campo · Martes</div>
+        <div class="cuentos-list">
+          <a href="#" class="cuento-card">
+            <div class="cuento-num">E08</div>
+            <div class="cuento-info">
+              <div class="cuento-tipo">Mito agrícola · descifrado</div>
+              <div class="cuento-title">La luna llena y el control de plagas: mito o método</div>
+              <div class="cuento-dur">🎙️ 8 min · Spotify · YouTube</div>
+            </div>
+            <div class="cuento-play">▶</div>
+          </a>
+          <a href="#" class="cuento-card">
+            <div class="cuento-num">E07</div>
+            <div class="cuento-info">
+              <div class="cuento-tipo">Práctica ancestral · validada</div>
+              <div class="cuento-title">El ajo y el chile: de remedio de abuela a bioinsumo certificado</div>
+              <div class="cuento-dur">🎙️ 7 min · Spotify · YouTube</div>
+            </div>
+            <div class="cuento-play">▶</div>
+          </a>
+          <a href="#" class="cuento-card">
+            <div class="cuento-num">E06</div>
+            <div class="cuento-info">
+              <div class="cuento-tipo">Leyenda Purépecha · agronomía</div>
+              <div class="cuento-title">Cómo los purépechas controlaban plagas antes de los químicos</div>
+              <div class="cuento-dur">🎙️ 9 min · Spotify · YouTube</div>
+            </div>
+            <div class="cuento-play">▶</div>
+          </a>
+          <a href="#" class="cuento-card">
+            <div class="cuento-num">E05</div>
+            <div class="cuento-info">
+              <div class="cuento-tipo">Historia · ciencia</div>
+              <div class="cuento-title">El cempasúchil que se volvió insecticida: origen de las piretrinas</div>
+              <div class="cuento-dur">🎙️ 11 min · Spotify · YouTube</div>
+            </div>
+            <div class="cuento-play">▶</div>
+          </a>
+        </div>
+        <a href="#" style="display:inline-flex;align-items:center;gap:6px;margin-top:1.25rem;font-size:13px;font-weight:700;color:var(--cafe-medio);text-decoration:none;">Ver todos los episodios →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS DE CAMPO -->
+<section class="casos-section" id="casos">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div class="section-eyebrow">Evidencia documentada</div>
+        <h2 class="section-title">Casos de <em>campo</em></h2>
+        <p class="section-desc">Resultados reales con fotografía de 6 puntos: el sitio, el daño, la aplicación, el producto y el resultado.</p>
+      </div>
+      <a href="#" style="font-size:14px;font-weight:700;color:var(--verde-medio);text-decoration:none;padding-bottom:.5rem;">Ver todos los casos →</a>
+    </div>
+    <div class="casos-grid">
+      <a href="#" class="caso-card">
+        <div class="caso-header">
+          <span class="caso-type-badge badge-trips">Trips · berries</span>
+          <div class="caso-result-badge"><span class="caso-result-dot"></span>Controlado en 5 días</div>
+        </div>
+        <div class="caso-body">
+          <h3 class="caso-title">Control de Frankliniella occidentalis en zarzamora — Tingüindín</h3>
+          <div class="evidence-dot-grid" style="display:flex;gap:5px;margin-bottom:1rem;">
+            <span style="font-size:11px;font-weight:600;color:#888;margin-right:4px;">Evidencia:</span>
+            <span class="caso-prod-tag">📍 Sitio</span>
+            <span class="caso-prod-tag">🌿 Panorámica</span>
+            <span class="caso-prod-tag">🔬 Daño</span>
+            <span class="caso-prod-tag">💊 Aplicación</span>
+            <span class="caso-prod-tag">✅ Resultado</span>
+          </div>
+          <p class="caso-desc">Infestación de trips en etapa de floración. Programa de 2 aplicaciones con Max Asencia + Cintrex en rotación. Reducción del 87% de población adulta confirmada por conteo en trampa.</p>
+          <div class="caso-footer">
+            <span class="caso-location">📍 Tingüindín, Michoacán</span>
+            <div class="caso-productos">
+              <span class="caso-prod-tag">Max Asencia</span>
+              <span class="caso-prod-tag">Cintrex</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="caso-card">
+        <div class="caso-header">
+          <span class="caso-type-badge badge-aranha">Araña roja · aguacate</span>
+          <div class="caso-result-badge"><span class="caso-result-dot"></span>Reducción 90% en 7 días</div>
+        </div>
+        <div class="caso-body">
+          <h3 class="caso-title">Manejo de Tetranychus urticae en aguacate Hass — Uruapan</h3>
+          <div style="display:flex;gap:5px;margin-bottom:1rem;">
+            <span style="font-size:11px;font-weight:600;color:#888;margin-right:4px;">Evidencia:</span>
+            <span class="caso-prod-tag">📍 Sitio</span>
+            <span class="caso-prod-tag">🌿 Panorámica</span>
+            <span class="caso-prod-tag">🔬 Daño</span>
+            <span class="caso-prod-tag">💊 Aplicación</span>
+            <span class="caso-prod-tag">✅ Resultado</span>
+          </div>
+          <p class="caso-desc">Ataque severo de araña roja en etapa de desarrollo de fruto. Aplicación de Ashuni + coadyuvante. Conteo de ácaros por hoja: reducción de 42 a 4 individuos por hoja en 7 días.</p>
+          <div class="caso-footer">
+            <span class="caso-location">📍 Uruapan, Michoacán</span>
+            <div class="caso-productos">
+              <span class="caso-prod-tag">Ashuni</span>
+              <span class="caso-prod-tag">Bistrol</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="caso-card">
+        <div class="caso-header">
+          <span class="caso-type-badge badge-botrytis">Botrytis · fresa</span>
+          <div class="caso-result-badge"><span class="caso-result-dot"></span>0% rechazo exportación</div>
+        </div>
+        <div class="caso-body">
+          <h3 class="caso-title">Programa preventivo de Botrytis cinerea en fresa — Zamora</h3>
+          <div style="display:flex;gap:5px;margin-bottom:1rem;">
+            <span style="font-size:11px;font-weight:600;color:#888;margin-right:4px;">Evidencia:</span>
+            <span class="caso-prod-tag">📍 Sitio</span>
+            <span class="caso-prod-tag">🌿 Panorámica</span>
+            <span class="caso-prod-tag">🔬 Daño</span>
+            <span class="caso-prod-tag">💊 Aplicación</span>
+            <span class="caso-prod-tag">✅ Resultado</span>
+          </div>
+          <p class="caso-desc">Temporada de alta humedad en Zamora. Protocolo preventivo con fungicidas biorracionales en alternancia. Lote sin rechazos en auditoría SENASICA para exportación a EUA.</p>
+          <div class="caso-footer">
+            <span class="caso-location">📍 Zamora, Michoacán</span>
+            <div class="caso-productos">
+              <span class="caso-prod-tag">Sub Trol</span>
+              <span class="caso-prod-tag">Bistrol</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="caso-card">
+        <div class="caso-header">
+          <span class="caso-type-badge badge-mosca">Mosca blanca · hortalizas</span>
+          <div class="caso-result-badge"><span class="caso-result-dot"></span>Control a 10 días</div>
+        </div>
+        <div class="caso-body">
+          <h3 class="caso-title">Control de Bemisia tabaci en tomate — Maravatío</h3>
+          <div style="display:flex;gap:5px;margin-bottom:1rem;">
+            <span style="font-size:11px;font-weight:600;color:#888;margin-right:4px;">Evidencia:</span>
+            <span class="caso-prod-tag">📍 Sitio</span>
+            <span class="caso-prod-tag">🌿 Panorámica</span>
+            <span class="caso-prod-tag">🔬 Daño</span>
+            <span class="caso-prod-tag">💊 Aplicación</span>
+            <span class="caso-prod-tag">✅ Resultado</span>
+          </div>
+          <p class="caso-desc">Alta incidencia de mosca blanca con virosis asociada. Programa integrado con Ashuni + Biomix G. Reducción poblacional del 78% confirmada y sin síntomas virales 21 días post-aplicación.</p>
+          <div class="caso-footer">
+            <span class="caso-location">📍 Maravatío, Michoacán</span>
+            <div class="caso-productos">
+              <span class="caso-prod-tag">Ashuni</span>
+              <span class="caso-prod-tag">Biomix G</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO DE CAMPO -->
+<section class="equipo-section" id="equipo">
+  <div class="container">
+    <div class="section-eyebrow">Detrás del sistema</div>
+    <h2 class="section-title">Las <em>guardianas</em> del campo</h2>
+    <p class="section-desc">El sistema PRODENI Shield funciona porque tiene ingenieras reales en campo, en las 3 zonas productoras más importantes de Michoacán, todos los domingos.</p>
+    <div class="equipo-grid" style="margin-top:2.5rem;">
+      <div class="equipo-card">
+        <div class="equipo-avatar av-1">IG1</div>
+        <div class="equipo-name">Ing. Zona Maravatío</div>
+        <div class="equipo-role">Guardiana del campo</div>
+        <div class="equipo-zona">📍 Maravatío · Zitácuaro · Tuxpan</div>
+        <div class="equipo-cultivos">
+          <span class="equipo-cultivo-pill">Hortalizas</span>
+          <span class="equipo-cultivo-pill">Berries</span>
+          <span class="equipo-cultivo-pill">Aguacate</span>
+        </div>
+      </div>
+      <div class="equipo-card">
+        <div class="equipo-avatar av-2">IG2</div>
+        <div class="equipo-name">Ing. Zona Pátzcuaro</div>
+        <div class="equipo-role">Guardiana del campo</div>
+        <div class="equipo-zona">📍 Pátzcuaro · Villamadero · Quiroga</div>
+        <div class="equipo-cultivos">
+          <span class="equipo-cultivo-pill">Berries</span>
+          <span class="equipo-cultivo-pill">Aguacate</span>
+          <span class="equipo-cultivo-pill">Granos</span>
+        </div>
+      </div>
+      <div class="equipo-card">
+        <div class="equipo-avatar av-3">IG3</div>
+        <div class="equipo-name">Ing. Zona Uruapan</div>
+        <div class="equipo-role">Guardiana del campo</div>
+        <div class="equipo-zona">📍 Uruapan · Tingüindín · Los Reyes</div>
+        <div class="equipo-cultivos">
+          <span class="equipo-cultivo-pill">Aguacate Hass</span>
+          <span class="equipo-cultivo-pill">Berries</span>
+          <span class="equipo-cultivo-pill">Cítricos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSCRIPCIÓN -->
+<section class="suscripcion-section" id="suscripcion">
+  <div class="container">
+    <div class="suscripcion-inner">
+      <div>
+        <div class="section-eyebrow" style="color:var(--verde-oscuro);">Únete al sistema</div>
+        <h2 class="sus-title">Recibe el <em>Radar</em><br>cada viernes.</h2>
+        <p class="sus-desc">Inteligencia agrícola semanal directo a tu correo. Clima, plagas prioritarias, señales tempranas y recomendaciones técnicas para tu cultivo y zona.</p>
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--verde-oscuro);font-weight:600;">
+            <span style="color:var(--verde-medio);">✓</span> Sin spam. Sin ventas disfrazadas de contenido.
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--verde-oscuro);font-weight:600;">
+            <span style="color:var(--verde-medio);">✓</span> Información técnica real validada por ingeniero agrónomo.
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--verde-oscuro);font-weight:600;">
+            <span style="color:var(--verde-medio);">✓</span> Puedes cancelar cuando quieras.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sus-form">
+          <div class="sus-row">
+            <input class="sus-input" type="text" placeholder="Tu nombre">
+            <input class="sus-input" type="email" placeholder="Tu correo electrónico">
+          </div>
+          <div class="sus-row">
+            <input class="sus-input" type="tel" placeholder="WhatsApp (opcional)">
+            <select class="sus-input sus-select">
+              <option value="" disabled selected>Tu cultivo principal</option>
+              <option>Aguacate</option>
+              <option>Berries (arándano)</option>
+              <option>Berries (zarzamora)</option>
+              <option>Berries (frambuesa)</option>
+              <option>Fresa</option>
+              <option>Hortalizas</option>
+              <option>Cítricos</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <select class="sus-input sus-select">
+            <option value="" disabled selected>Tu zona / municipio</option>
+            <option>Tingüindín</option>
+            <option>Uruapan</option>
+            <option>Zamora / Jacona</option>
+            <option>Pátzcuaro</option>
+            <option>Maravatío</option>
+            <option>Los Reyes</option>
+            <option>Jalisco</option>
+            <option>Sinaloa</option>
+            <option>Otro estado</option>
+          </select>
+          <button class="sus-btn">
+            📡 Suscribirme al Radar del Campo
+          </button>
+          <p class="sus-note">Al suscribirte aceptas recibir comunicaciones técnicas de PRODENI. Puedes cancelar en cualquier momento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-bg"></div>
+  <div class="container">
+    <h2 class="cta-title">¿Tu campo muestra algo<br>que <em>no reconoces?</em></h2>
+    <p class="cta-desc">Un agrónomo real revisa tu caso. Sin costo, sin vendedor intermediario. Solo diagnóstico técnico honesto para tu cultivo en Michoacán.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/524521906583" class="btn-primary" style="font-size:16px;padding:16px 32px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Diagnóstico gratuito por WhatsApp
+      </a>
+      <a href="#suscripcion" class="btn-secondary" style="font-size:16px;padding:16px 32px;">
+        Suscribirme al Radar →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">PRODENI</div>
+        <span class="footer-brand-sub">Pasión por lo orgánico</span>
+        <p class="footer-manifesto">PRODENI Shield™ — Sistema de inteligencia agrícola activo 5 días a la semana. Guardianes de la tierra.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Shield</div>
+        <ul class="footer-links">
+          <li><a href="#">Radar Agrícola</a></li>
+          <li><a href="#">La Señal del Guardián</a></li>
+          <li><a href="#">La Voz del Guardián</a></li>
+          <li><a href="#">Cuentos del Campo</a></li>
+          <li><a href="#">Casos de Campo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Productos</div>
+        <ul class="footer-links">
+          <li><a href="#">Max Asencia</a></li>
+          <li><a href="#">Cintrex</a></li>
+          <li><a href="#">Ashuni</a></li>
+          <li><a href="#">Biomix G</a></li>
+          <li><a href="#">Paquetes integrales</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/524521906583">WhatsApp 452 201 8822</a></li>
+          <li><a href="mailto:atc.prodeni@gmail.com">atc.prodeni@gmail.com</a></li>
+          <li><a href="#">www.prodeni.com.mx</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider">
+      <div class="footer-bottom-text">© 2025 Prodeni. Todos los derechos reservados. Michoacán, México.</div>
+      <div class="footer-certs">
+        <span class="footer-cert-badge">OMRI LISTED</span>
+        <span class="footer-cert-badge">COFEPRIS</span>
+        <span class="footer-cert-badge">PRODENI SHIELD™</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/524521906583" class="wa-float" title="WhatsApp Diagnóstico Gratuito">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
