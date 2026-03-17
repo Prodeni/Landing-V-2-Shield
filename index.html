@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRODENI — Pasión por lo Orgánico | Biorracionales para berries y aguacate en Michoacán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto+Slab:wght@300;400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BRAND TOKENS ===== */
+:root {
+  --verde-oscuro:   #0e3525;
+  --verde-medio:    #45a464;
+  --verde-claro:    #dae9da;
+  --azul-oscuro:    #002a50;
+  --azul-medio:     #57ade0;
+  --azul-claro:     #d8ecfb;
+  --cafe-oscuro:    #312200;
+  --cafe-medio:     #8d642c;
+  --cafe-claro:     #e7dbcf;
+  --rojo:           #d95935;
+  --amarillo:       #f7ce4c;
+  --crema:          #fffbdf;
+
+  --font-heading:  'DM Serif Display', serif;
+  --font-body:     'Open Sans', sans-serif;
+  --font-slab:     'Roboto Slab', serif;
+
+  --max-w: 1200px;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: #fff;
+  color: var(--verde-oscuro);
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(14,53,37,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(69,164,100,0.2);
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.nav-logo-sub {
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--verde-medio);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1;
+}
+.nav-logo-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-links a.shield {
+  color: var(--amarillo);
+  border: 1px solid rgba(247,206,76,0.3);
+}
+.nav-links a.shield:hover { background: rgba(247,206,76,0.1); }
+
+.nav-cta {
+  background: var(--verde-medio);
+  color: #fff !important;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  transition: all 0.2s !important;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: #3a9050 !important; transform: translateY(-1px); }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: var(--verde-oscuro);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  padding-top: 64px;
+}
+
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(69,164,100,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(247,206,76,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-left {
+  padding: 5rem 3rem 5rem 6rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(69,164,100,0.15);
+  border: 1px solid rgba(69,164,100,0.3);
+  color: var(--verde-medio);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--verde-medio);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:0.5;transform:scale(1.3)}
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4.5vw, 4.4rem);
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--verde-medio);
+}
+.hero-title .highlight {
+  color: var(--amarillo);
+  font-style: normal;
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+  font-family: var(--font-slab);
+  font-weight: 300;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--verde-medio);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: #3a9050;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(69,164,100,0.35);
+}
+.btn-primary svg { transition: transform 0.2s; }
+.btn-primary:hover svg { transform: translateX(3px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.35);
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.hero-trust-item {
+  text-align: center;
+}
+.hero-trust-num {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--amarillo);
+  display: block;
+  line-height: 1;
+}
+.hero-trust-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+  display: block;
+  margin-top: 2px;
+}
+.hero-trust-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.12);
+}
+
+.hero-right {
+  position: relative;
+  height: 100%;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 90%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.hero-image-main {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, rgba(69,164,100,0.2) 0%, rgba(14,53,37,0.6) 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(69,164,100,0.2);
+}
+
+.hero-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(14,53,37,0.2) 0%, rgba(14,53,37,0.7) 100%),
+    url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&q=80') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.hero-image-caption {
+  background: rgba(14,53,37,0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(69,164,100,0.25);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-caption-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--verde-medio);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px; color: #fff;
+  flex-shrink: 0;
+}
+.hero-caption-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #fff;
+}
+.hero-caption-place {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.55);
+}
+.hero-caption-stars {
+  margin-top: 2px;
+  color: var(--amarillo);
+  font-size: 11px;
+}
+
+/* Floating product card */
+.hero-product-float {
+  position: absolute;
+  top: 12%;
+  left: -18%;
+  background: rgba(255,255,255,0.96);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: float 4s ease-in-out infinite;
+  min-width: 190px;
+  z-index: 3;
+}
+@keyframes float {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+.hero-product-icon {
+  width: 44px; height: 44px;
+  background: var(--verde-claro);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.hero-product-name {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--verde-oscuro);
+}
+.hero-product-badge {
+  font-size: 10.5px;
+  color: var(--verde-medio);
+  font-weight: 600;
+  background: var(--verde-claro);
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-top: 2px;
+  display: inline-block;
+}
+
+/* OMRI badge */
+.hero-cert-float {
+  position: absolute;
+  bottom: 22%;
+  right: -12%;
+  background: rgba(14,53,37,0.92);
+  border: 1px solid rgba(69,164,100,0.35);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  text-align: center;
+  animation: float 4s 1.5s ease-in-out infinite;
+  z-index: 3;
+}
+.hero-cert-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.hero-cert-logos {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+.cert-pill {
+  background: rgba(69,164,100,0.2);
+  border: 1px solid rgba(69,164,100,0.3);
+  color: var(--verde-medio);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ===== BANDA DE CONFIANZA ===== */
+.trust-band {
+  background: var(--verde-claro);
+  border-top: 1px solid rgba(69,164,100,0.2);
+  border-bottom: 1px solid rgba(69,164,100,0.2);
+  padding: 1.25rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--verde-oscuro);
+  font-weight: 600;
+}
+.trust-item-icon {
+  font-size: 20px;
+}
+.trust-item span {
+  font-weight: 400;
+  color: #3a6b4e;
+}
+
+/* ===== SECTION COMMON ===== */
+section { padding: 5rem 0; }
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 6rem;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--verde-medio);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--verde-oscuro);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--verde-medio);
+}
+.section-desc {
+  font-family: var(--font-slab);
+  font-weight: 300;
+  font-size: 17px;
+  color: #3a6b4e;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* ===== PRODENI SHIELD SECTION ===== */
+.shield-section {
+  background: var(--verde-oscuro);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.shield-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(69,164,100,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.shield-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.shield-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(247,206,76,0.1);
+  border: 1px solid rgba(247,206,76,0.3);
+  color: var(--amarillo);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.shield-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.shield-title em { color: var(--verde-medio); font-style: italic; }
+.shield-desc {
+  font-family: var(--font-slab);
+  font-weight: 300;
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.shield-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.pillar-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(69,164,100,0.2);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.pillar-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(69,164,100,0.4);
+  transform: translateY(-4px);
+}
+.pillar-card:hover::before { opacity: 1; }
+
+.pillar-1::before { background: var(--verde-medio); }
+.pillar-2::before { background: var(--amarillo); }
+.pillar-3::before { background: var(--azul-medio); }
+
+.pillar-num {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  color: rgba(255,255,255,0.05);
+  position: absolute;
+  top: 0.5rem;
+  right: 1.25rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pillar-icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 24px;
+}
+.pillar-1 .pillar-icon-wrap { background: rgba(69,164,100,0.15); }
+.pillar-2 .pillar-icon-wrap { background: rgba(247,206,76,0.12); }
+.pillar-3 .pillar-icon-wrap { background: rgba(87,173,224,0.12); }
+
+.pillar-name {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.pillar-1 .pillar-name { color: var(--verde-medio); }
+.pillar-2 .pillar-name { color: var(--amarillo); }
+.pillar-3 .pillar-name { color: var(--azul-medio); }
+
+.pillar-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+.pillar-body {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+.pillar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pillar-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+.pillar-1 .pillar-tag { color: var(--verde-medio); border-color: rgba(69,164,100,0.25); background: rgba(69,164,100,0.08); }
+.pillar-2 .pillar-tag { color: var(--amarillo); border-color: rgba(247,206,76,0.25); background: rgba(247,206,76,0.08); }
+.pillar-3 .pillar-tag { color: var(--azul-medio); border-color: rgba(87,173,224,0.25); background: rgba(87,173,224,0.08); }
+
+.shield-cta-row {
+  text-align: center;
+  margin-top: 1rem;
+}
+.btn-shield {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--amarillo);
+  color: var(--cafe-oscuro);
+  padding: 15px 32px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+.btn-shield:hover {
+  background: #e6bc3a;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(247,206,76,0.3);
+}
+
+/* ===== PRODUCTOS DESTACADOS ===== */
+.products-section {
+  background: #fafafa;
+  padding: 5rem 0;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.product-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.product-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--verde-medio);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: left;
+}
+.product-card:hover {
+  border-color: rgba(69,164,100,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(14,53,37,0.08);
+}
+.product-card:hover::after { transform: scaleX(1); }
+
+.product-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--verde-medio);
+  background: var(--verde-claro);
+  padding: 3px 10px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+.product-badge.featured {
+  color: #fff;
+  background: var(--verde-medio);
+}
+.product-image-area {
+  height: 120px;
+  background: var(--verde-claro);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin-bottom: 1.25rem;
+}
+.product-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 0.3rem;
+}
+.product-tagline {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--verde-medio);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+.product-desc {
+  font-size: 13.5px;
+  color: #555;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+.product-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 1.25rem;
+}
+.target-pill {
+  font-size: 10.5px;
+  background: #f3f3f3;
+  color: #555;
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-weight: 500;
+}
+.product-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--verde-medio);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+}
+.product-link:hover { color: var(--verde-oscuro); }
+
+/* ===== QUIÉNES SOMOS ===== */
+.about-section {
+  padding: 5rem 0;
+  background: #fff;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-image-side {
+  position: relative;
+}
+.about-main-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--verde-claro);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.about-main-img-inner {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(180deg, transparent 50%, rgba(14,53,37,0.8) 100%),
+    url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80') center/cover;
+}
+.about-founder-tag {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: rgba(14,53,37,0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(69,164,100,0.25);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  color: #fff;
+}
+.about-founder-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+.about-founder-role {
+  font-size: 12px;
+  color: var(--verde-medio);
+  margin-top: 2px;
+}
+.about-years-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: -1.5rem;
+  background: var(--amarillo);
+  color: var(--cafe-oscuro);
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-heading);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.about-years-num {
+  font-size: 30px;
+  line-height: 1;
+}
+.about-years-text {
+  font-size: 9px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.2;
+}
+.about-text-side {}
+.about-manifesto {
+  background: var(--verde-claro);
+  border-left: 4px solid var(--verde-medio);
+  border-radius: 0 10px 10px 0;
+  padding: 1.5rem;
+  margin: 1.75rem 0;
+  font-family: var(--font-slab);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--verde-oscuro);
+  line-height: 1.7;
+  font-style: italic;
+}
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.value-card {
+  background: #f9f9f9;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  border: 1px solid #efefef;
+}
+.value-icon { font-size: 22px; margin-bottom: 0.5rem; }
+.value-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--verde-oscuro);
+  margin-bottom: 0.25rem;
+}
+.value-text {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.55;
+}
+
+/* ===== CULTIVOS SECTION ===== */
+.cultivos-section {
+  padding: 5rem 0;
+  background: var(--cafe-claro);
+}
+.cultivos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.cultivo-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.cultivo-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.cultivo-img {
+  height: 180px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.cultivo-aguacate .cultivo-img { background: linear-gradient(180deg, rgba(14,53,37,0.1) 0%, rgba(14,53,37,0.7) 100%), url('https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400&q=80') center/cover; }
+.cultivo-berries .cultivo-img  { background: linear-gradient(180deg, rgba(80,20,80,0.1) 0%, rgba(80,20,80,0.7) 100%), url('https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&q=80') center/cover; }
+.cultivo-caña .cultivo-img     { background: linear-gradient(180deg, rgba(14,53,37,0.1) 0%, rgba(141,100,44,0.7) 100%), url('https://images.unsplash.com/photo-1526297003708-bbc1ba7f3ab2?w=400&q=80') center/cover; }
+.cultivo-title-over {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1.1;
+}
+.cultivo-body {
+  padding: 1.25rem;
+}
+.cultivo-plagas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+.cultivo-plaga-tag {
+  font-size: 11px;
+  background: var(--verde-claro);
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+.cultivo-text {
+  font-size: 13.5px;
+  color: #555;
+  line-height: 1.6;
+}
+.cultivo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 1rem;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--verde-medio);
+  text-decoration: none;
+}
+
+/* ===== TESTIMONIOS ===== */
+.testi-section {
+  padding: 5rem 0;
+  background: #fff;
+}
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.testi-card {
+  background: #f9fbf9;
+  border: 1px solid #e2eee2;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+}
+.testi-quote-mark {
+  font-family: var(--font-heading);
+  font-size: 72px;
+  color: var(--verde-claro);
+  position: absolute;
+  top: -0.5rem;
+  left: 1.5rem;
+  line-height: 1;
+  pointer-events: none;
+}
+.testi-text {
+  font-family: var(--font-slab);
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--verde-oscuro);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.testi-crops {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+}
+.testi-crop-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  background: var(--verde-claro);
+  color: var(--verde-oscuro);
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+.testi-person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.testi-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--verde-medio);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.testi-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--verde-oscuro);
+}
+.testi-location {
+  font-size: 12px;
+  color: #888;
+}
+.testi-result {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--verde-medio);
+}
+.testi-result-dot {
+  width: 6px; height: 6px;
+  background: var(--verde-medio);
+  border-radius: 50%;
+}
+
+/* ===== CTA FINAL ===== */
+.final-cta {
+  background: var(--verde-oscuro);
+  padding: 5rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 30% 50%, rgba(69,164,100,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 70% 50%, rgba(247,206,76,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.final-cta-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #fff;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+.final-cta-title em { color: var(--verde-medio); font-style: italic; }
+.final-cta-desc {
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  font-family: var(--font-slab);
+  font-weight: 300;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.final-cta-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #081e13;
+  padding: 3.5rem 0 2rem;
+  color: rgba(255,255,255,0.5);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand-name {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.footer-brand-sub {
+  font-size: 10px;
+  color: var(--verde-medio);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+.footer-manifesto {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+  max-width: 260px;
+}
+.footer-heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--verde-medio); }
+.footer-contact-line {
+  font-size: 13px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-contact-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 2px;
+}
+.footer-divider {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom-text { font-size: 12.5px; }
+.footer-certs {
+  display: flex;
+  gap: 8px;
+}
+.footer-cert-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* WhatsApp flotante */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.45);
+  text-decoration: none;
+  transition: all 0.25s;
+  animation: float 3s ease-in-out infinite;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 28px rgba(37,211,102,0.55);
+}
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="38" rx="8" fill="#45a464"/>
+      <path d="M19 6C14 6 11 11 11 15.5C11 20 13.5 22 16 24L19 32L22 24C24.5 22 27 20 27 15.5C27 11 24 6 19 6Z" fill="#0e3525" opacity="0.3"/>
+      <path d="M19 6C19 6 19 18 15 24" stroke="#f7ce4c" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M19 6C19 6 19 18 23 24" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M19 8 Q23 12 21 18" stroke="#8d642c" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div>
+      <span class="nav-logo-text">PRODENI</span>
+      <span class="nav-logo-sub">Pasión por lo orgánico</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#soluciones">Soluciones por Plaga</a></li>
+    <li><a href="#cultivos">Cultivos</a></li>
+    <li><a href="prodeni-shield-hub.html" class="shield">⬡ PRODENI Shield</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/524521906583" class="btn nav-cta">Habla con un agrónomo →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Biorracionales certificados · Michoacán, México
+    </div>
+
+    <h1 class="hero-title">
+      Protege tu cosecha<br>
+      <em>en Michoacán</em><br>
+      sin venenos.
+    </h1>
+
+    <p class="hero-subtitle">
+      Soluciones biorracionales con piretrinas naturales de cempasúchil mexicano. 
+      Efectivas desde la primera aplicación, seguras para tus polinizadores.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="https://wa.me/524521906583" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Habla con un agrónomo
+      </a>
+      <a href="prodeni-shield-hub.html" class="btn-secondary">
+        Conoce PRODENI Shield →
+      </a>
+    </div>
+
+    <div class="hero-trust">
+      <div class="hero-trust-item">
+        <span class="hero-trust-num">20+</span>
+        <span class="hero-trust-label">años en<br>el campo</span>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-item">
+        <span class="hero-trust-num">3</span>
+        <span class="hero-trust-label">estados<br>presencia</span>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-item">
+        <span class="hero-trust-num">OMRI</span>
+        <span class="hero-trust-label">certificación<br>orgánica</span>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-item">
+        <span class="hero-trust-num">100%</span>
+        <span class="hero-trust-label">hecho en<br>México</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-container">
+      <!-- Floating product card -->
+      <div class="hero-product-float">
+        <div class="hero-product-icon">🌸</div>
+        <div>
+          <div class="hero-product-name">Max Asencia</div>
+          <div class="hero-product-badge">⭐ Insecticida #1</div>
+        </div>
+      </div>
+
+      <!-- Main image -->
+      <div class="hero-image-main">
+        <div class="hero-image-placeholder">
+          <div class="hero-image-caption">
+            <div class="hero-caption-avatar">JC</div>
+            <div>
+              <div class="hero-caption-name">Juan Carlos Martínez</div>
+              <div class="hero-caption-place">Tingüindín, Michoacán</div>
+              <div class="hero-caption-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cert badge -->
+      <div class="hero-cert-float">
+        <div class="hero-cert-name">Certificaciones</div>
+        <div class="hero-cert-logos">
+          <span class="cert-pill">OMRI</span>
+          <span class="cert-pill">COFEPRIS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDA CONFIANZA -->
+<div class="trust-band">
+  <div class="trust-item">
+    <span class="trust-item-icon">🌿</span>
+    <div>Piretrinas naturales de cempasúchil <span>· 100% mexicano</span></div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-item-icon">🐝</span>
+    <div>Seguro para polinizadores <span>· certificado OMRI</span></div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-item-icon">📋</span>
+    <div>Registrado ante COFEPRIS <span>· con fichas técnicas</span></div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-item-icon">🚚</span>
+    <div>Envío a Michoacán, Jalisco y Sinaloa <span>· soporte técnico incluido</span></div>
+  </div>
+</div>
+
+<!-- PRODENI SHIELD -->
+<section class="shield-section" id="shield">
+  <div class="shield-bg"></div>
+  <div class="container">
+    <div class="shield-header">
+      <div class="shield-eyebrow">⬡ Sistema de protección integral</div>
+      <h2 class="shield-title">PRODENI <em>Shield</em></h2>
+      <p class="shield-desc">
+        No somos solo un proveedor de insumos. Somos el sistema completo que 
+        protege tu cultivo desde la primera brotación hasta la cosecha. Tres pilares, 
+        una sola garantía: exportación sin residuos.
+      </p>
+    </div>
+
+    <div class="shield-pillars">
+      <!-- Pilar 1 -->
+      <div class="pillar-card pillar-1">
+        <span class="pillar-num">01</span>
+        <div class="pillar-icon-wrap">🛰️</div>
+        <div class="pillar-name">Inteligencia de campo</div>
+        <h3 class="pillar-title">Monitoreo y alertas de plagas</h3>
+        <p class="pillar-body">
+          Nuestros agrónomos monitorean las principales presiones fitosanitarias 
+          en Michoacán, Jalisco y Sinaloa. Recibes alertas tempranas antes de que 
+          la plaga dañe tu cosecha.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Radar de plagas</span>
+          <span class="pillar-tag">Alertas regionales</span>
+          <span class="pillar-tag">Clima agrícola</span>
+          <span class="pillar-tag">Recomendaciones</span>
+        </div>
+      </div>
+
+      <!-- Pilar 2 -->
+      <div class="pillar-card pillar-2">
+        <span class="pillar-num">02</span>
+        <div class="pillar-icon-wrap">📐</div>
+        <div class="pillar-name">Programas fenológicos</div>
+        <h3 class="pillar-title">Cada etapa, su protocolo</h3>
+        <p class="pillar-body">
+          Paquetes fitosanitarios diseñados por etapa: brotación, floración, 
+          cuajado, desarrollo y pre-cosecha. El producto correcto en el 
+          momento exacto, con dosis calculadas por hectárea.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">4 etapas fenológicas</span>
+          <span class="pillar-tag">Paquetes integrados</span>
+          <span class="pillar-tag">Dosis calculadas</span>
+          <span class="pillar-tag">Aguacate · Berries</span>
+        </div>
+      </div>
+
+      <!-- Pilar 3 -->
+      <div class="pillar-card pillar-3">
+        <span class="pillar-num">03</span>
+        <div class="pillar-icon-wrap">🔬</div>
+        <div class="pillar-name">Soluciones biorracionales</div>
+        <h3 class="pillar-title">Tecnología que funciona en campo</h3>
+        <p class="pillar-body">
+          Insecticidas, fungicidas, coadyuvantes y bioestimulantes certificados 
+          para producción orgánica. Formulaciones con piretrinas naturales 
+          extraídas de flores de cempasúchil mexicanas.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Piretrinas naturales</span>
+          <span class="pillar-tag">Certificado OMRI</span>
+          <span class="pillar-tag">Sin residuos</span>
+          <span class="pillar-tag">Ficha técnica</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shield-cta-row">
+      <a href="#paquetes" class="btn-shield">
+        Ver paquetes por etapa fenológica →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS DESTACADOS -->
+<section class="products-section" id="productos">
+  <div class="container">
+    <div class="section-eyebrow">Nuestros productos</div>
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;margin-bottom:0.5rem;">
+      <h2 class="section-title">Biorracionales <em>que resuelven</em><br>en campo.</h2>
+      <a href="#" style="font-size:14px;font-weight:700;color:var(--verde-medio);text-decoration:none;white-space:nowrap;padding-bottom:0.75rem;">Ver todos los productos →</a>
+    </div>
+    <p class="section-desc">Formulaciones técnicas con modo de acción específico, dosis calculadas y certificación orgánica.</p>
+
+    <div class="products-grid">
+      <!-- Max Asencia -->
+      <div class="product-card">
+        <span class="product-badge featured">⭐ Más vendido</span>
+        <div class="product-image-area">🌸</div>
+        <div class="product-name">Max Asencia</div>
+        <div class="product-tagline">Insecticida de contacto e ingestión</div>
+        <p class="product-desc">Piretrinas naturales 4% + sinergistas. Acción rápida contra insectos plaga en berries y aguacate. Biodegradable, sin período de carencia para exportación.</p>
+        <div class="product-targets">
+          <span class="target-pill">Trips</span>
+          <span class="target-pill">Mosquita blanca</span>
+          <span class="target-pill">Ácaros</span>
+        </div>
+        <a href="#" class="product-link">Ver ficha técnica →</a>
+      </div>
+
+      <!-- Cintrex -->
+      <div class="product-card">
+        <span class="product-badge">Insecticida botánico</span>
+        <div class="product-image-area">🌱</div>
+        <div class="product-name">Cintrex</div>
+        <div class="product-tagline">Extractos vegetales de alta eficacia</div>
+        <p class="product-desc">Insecticida botánico sistémico con extractos de Azadirachta indica + piretrinas. Control de trips, mosquita blanca y pulgón. Compatible con fauna benéfica.</p>
+        <div class="product-targets">
+          <span class="target-pill">Trips</span>
+          <span class="target-pill">Pulgón</span>
+          <span class="target-pill">Mosquita blanca</span>
+        </div>
+        <a href="#" class="product-link">Ver ficha técnica →</a>
+      </div>
+
+      <!-- Ashuni -->
+      <div class="product-card">
+        <span class="product-badge">Jabón potásico</span>
+        <div class="product-image-area">💧</div>
+        <div class="product-name">Ashuni</div>
+        <div class="product-tagline">Control mecánico-biológico de plagas</div>
+        <p class="product-desc">Jabón potásico ecológico 50%. Elimina cera y tegumento de plagas blandas por acción física directa. Sin riesgo de resistencia, apto para manejo orgánico certificado.</p>
+        <div class="product-targets">
+          <span class="target-pill">Cochinilla</span>
+          <span class="target-pill">Ácaros</span>
+          <span class="target-pill">Mosquita blanca</span>
+        </div>
+        <a href="#" class="product-link">Ver ficha técnica →</a>
+      </div>
+
+      <!-- Biomix G -->
+      <div class="product-card">
+        <span class="product-badge">Multiacción</span>
+        <div class="product-image-area">🧪</div>
+        <div class="product-name">Biomix G</div>
+        <div class="product-tagline">Extracto vegetal de amplio espectro</div>
+        <p class="product-desc">Mezcla de extractos botánicos con efecto repelente, antialimentario y ovicida. Solución multiuso con alta compatibilidad de mezcla para programas integrados.</p>
+        <div class="product-targets">
+          <span class="target-pill">Trips</span>
+          <span class="target-pill">Araña roja</span>
+          <span class="target-pill">Barrenadores</span>
+        </div>
+        <a href="#" class="product-link">Ver ficha técnica →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="about-section" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-side">
+        <div class="about-main-img">
+          <div class="about-main-img-inner"></div>
+          <div class="about-founder-tag">
+            <div class="about-founder-name">Macedonio Arteaga</div>
+            <div class="about-founder-role">Fundador · Ing. Agrónomo · 25 años en campo</div>
+          </div>
+        </div>
+        <div class="about-years-badge">
+          <span class="about-years-num">20+</span>
+          <span class="about-years-text">años de<br>experiencia</span>
+        </div>
+      </div>
+
+      <div class="about-text-side">
+        <div class="section-eyebrow">Quiénes somos</div>
+        <h2 class="section-title">Nacimos del <em>campo</em>,<br>no del laboratorio.</h2>
+
+        <blockquote class="about-manifesto">
+          "El campo está cansado. Lo han llenado de venenos y promesas rotas. 
+          Prodeni nace como respuesta — creemos que la tierra no se controla, se escucha."
+        </blockquote>
+
+        <p style="font-size:15.5px;color:#444;line-height:1.75;margin-bottom:1.5rem;">
+          Fundada por Macedonio Arteaga, ingeniero agrónomo con más de 25 años cultivando 
+          berries y aguacate en Michoacán. Prodeni nació de una necesidad real del campo, 
+          no de un modelo de negocio. Hoy somos aliados de productores en Michoacán, 
+          Jalisco y Sinaloa.
+        </p>
+
+        <div class="about-values">
+          <div class="value-card">
+            <div class="value-icon">🌱</div>
+            <div class="value-title">Sin químicos sintéticos</div>
+            <div class="value-text">Todos nuestros productos son biorracionales con cero residuos en fruto.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🔬</div>
+            <div class="value-title">Respaldo técnico real</div>
+            <div class="value-text">Ingeniero agrónomo disponible para cada productor, no un call center.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🇲🇽</div>
+            <div class="value-title">Hecho en México</div>
+            <div class="value-text">Flores de cempasúchil mexicanas. Formulación y control de calidad nacionales.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">📦</div>
+            <div class="value-title">Exportación segura</div>
+            <div class="value-text">Certificados OMRI y COFEPRIS. Tu cosecha cumple con cualquier estándar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTIVOS PROTEGIDOS -->
+<section class="cultivos-section" id="cultivos">
+  <div class="container">
+    <div class="section-eyebrow">Cultivos protegidos</div>
+    <h2 class="section-title">Protegemos lo que <em>Michoacán</em><br>exporta al mundo.</h2>
+
+    <div class="cultivos-grid">
+      <a href="#" class="cultivo-card cultivo-aguacate">
+        <div class="cultivo-img">
+          <div class="cultivo-title-over">Aguacate orgánico<br>en Michoacán</div>
+        </div>
+        <div class="cultivo-body">
+          <div class="cultivo-plagas">
+            <span class="cultivo-plaga-tag">Trips</span>
+            <span class="cultivo-plaga-tag">Araña roja</span>
+            <span class="cultivo-plaga-tag">Barrenador</span>
+          </div>
+          <p class="cultivo-text">Programas biorracionales para las 4 etapas fenológicas del aguacate Hass. Control de plagas clave sin afectar la calidad para exportación.</p>
+          <span class="cultivo-link">Ver programa →</span>
+        </div>
+      </a>
+
+      <a href="#" class="cultivo-card cultivo-berries">
+        <div class="cultivo-img">
+          <div class="cultivo-title-over">Berries orgánicas<br>en Michoacán</div>
+        </div>
+        <div class="cultivo-body">
+          <div class="cultivo-plagas">
+            <span class="cultivo-plaga-tag">Trips</span>
+            <span class="cultivo-plaga-tag">Botrytis</span>
+            <span class="cultivo-plaga-tag">Araña roja</span>
+          </div>
+          <p class="cultivo-text">Arándano, frambuesa y zarzamora de exportación. Manejo orgánico que protege la floración y garantiza fruta con cero residuos y alta vida de anaquel.</p>
+          <span class="cultivo-link">Ver programa →</span>
+        </div>
+      </a>
+
+      <a href="#" class="cultivo-card cultivo-caña">
+        <div class="cultivo-img">
+          <div class="cultivo-title-over">Hortalizas y<br>otros cultivos</div>
+        </div>
+        <div class="cultivo-body">
+          <div class="cultivo-plagas">
+            <span class="cultivo-plaga-tag">Mosquita blanca</span>
+            <span class="cultivo-plaga-tag">Pulgón</span>
+            <span class="cultivo-plaga-tag">Cochinilla</span>
+          </div>
+          <p class="cultivo-text">Soluciones biorracionales adaptadas a cultivos de temporal, hortalizas, cítricos y granos. Consulta el programa específico para tu cultivo.</p>
+          <span class="cultivo-link">Ver programa →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testi-section" id="testimonios">
+  <div class="container">
+    <div class="section-eyebrow">Testimonios</div>
+    <h2 class="section-title">Confianza que se <em>cultiva</em><br>en campo.</h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <span class="testi-quote-mark">"</span>
+        <p class="testi-text">Gracias al manejo orgánico con Prodeni, nuestra floración se mantuvo sin daños y el amarre del fruto fue mucho más firme, sin comprometer la sanidad del cultivo.</p>
+        <div class="testi-crops">
+          <span class="testi-crop-tag">Berries</span>
+          <span class="testi-crop-tag">Max Asencia</span>
+        </div>
+        <div class="testi-person">
+          <div class="testi-avatar">JC</div>
+          <div>
+            <div class="testi-name">Juan Carlos Martínez G.</div>
+            <div class="testi-location">Tingüindín, Michoacán</div>
+            <div class="testi-result">
+              <span class="testi-result-dot"></span>
+              Floración +35% de amarre
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <span class="testi-quote-mark">"</span>
+        <p class="testi-text">Lo que más valoro es que puedo hablar directamente con el agrónomo. Me explica la plaga, el ciclo y qué aplicar. No solo me venden el producto, me acompañan.</p>
+        <div class="testi-crops">
+          <span class="testi-crop-tag">Aguacate Hass</span>
+          <span class="testi-crop-tag">Cintrex</span>
+        </div>
+        <div class="testi-person">
+          <div class="testi-avatar">RA</div>
+          <div>
+            <div class="testi-name">Roberto Ávila M.</div>
+            <div class="testi-location">Uruapan, Michoacán</div>
+            <div class="testi-result">
+              <span class="testi-result-dot"></span>
+              Certificación orgánica lograda
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <span class="testi-quote-mark">"</span>
+        <p class="testi-text">Usé Prodeni por primera vez en la temporada de araña roja en mi huerta. Resultados visibles a los 5 días. Mis abejas siguieron trabajando sin ningún problema.</p>
+        <div class="testi-crops">
+          <span class="testi-crop-tag">Aguacate</span>
+          <span class="testi-crop-tag">Ashuni</span>
+        </div>
+        <div class="testi-person">
+          <div class="testi-avatar">ML</div>
+          <div>
+            <div class="testi-name">María Lourdes Pérez</div>
+            <div class="testi-location">Los Reyes, Michoacán</div>
+            <div class="testi-result">
+              <span class="testi-result-dot"></span>
+              Araña roja controlada en 5 días
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta" id="contacto">
+  <div class="final-cta-bg"></div>
+  <div class="container">
+    <h2 class="final-cta-title">
+      Cada cultivo tiene su<br>
+      propia historia. <em>Cuéntanos la tuya.</em>
+    </h2>
+    <p class="final-cta-desc">
+      Habla directamente con un ingeniero agrónomo. Sin vendedores intermediarios, 
+      sin scripts. Solo soluciones reales para tu campo en Michoacán.
+    </p>
+    <div class="final-cta-buttons">
+      <a href="https://wa.me/524521906583" class="btn-primary" style="font-size:16px;padding:16px 32px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp con agrónomo
+      </a>
+      <a href="#" class="btn-secondary" style="font-size:16px;padding:16px 32px;">
+        Solicitar cotización
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">PRODENI</div>
+        <span class="footer-brand-sub">Pasión por lo orgánico</span>
+        <p class="footer-manifesto">
+          Guardianes de la tierra. Soluciones biorracionales para productores 
+          que creen que el futuro del campo se cultiva sin venenos.
+        </p>
+      </div>
+      <div>
+        <div class="footer-heading">Productos</div>
+        <ul class="footer-links">
+          <li><a href="#">Insecticidas</a></li>
+          <li><a href="#">Fungicidas</a></li>
+          <li><a href="#">Coadyuvantes</a></li>
+          <li><a href="#">Nutrientes</a></li>
+          <li><a href="#">Inoculantes</a></li>
+          <li><a href="#">Max Asencia</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Soluciones</div>
+        <ul class="footer-links">
+          <li><a href="#">Aguacate orgánico</a></li>
+          <li><a href="#">Berries orgánicas</a></li>
+          <li><a href="#">Control de trips</a></li>
+          <li><a href="#">Control araña roja</a></li>
+          <li><a href="#">Paquetes integrales</a></li>
+          <li><a href="#">PRODENI Shield</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contacto</div>
+        <div>
+          <div class="footer-contact-label">Atención a clientes</div>
+          <div class="footer-contact-line">📞 452 190 6583</div>
+          <div class="footer-contact-line" style="margin-bottom:1rem;">✉️ atc.prodeni@gmail.com</div>
+          <div class="footer-contact-label">Facturación</div>
+          <div class="footer-contact-line">📞 452 112 6857</div>
+          <div class="footer-contact-line">✉️ facturasprodeni@hotmail.com</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider">
+      <div class="footer-bottom-text">© 2025 Prodeni. Todos los derechos reservados. Michoacán, México.</div>
+      <div class="footer-certs">
+        <span class="footer-cert-badge">OMRI LISTED</span>
+        <span class="footer-cert-badge">COFEPRIS</span>
+        <span class="footer-cert-badge">HECHO EN MÉXICO</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/524521906583" class="wa-float" title="Habla con un agrónomo por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
